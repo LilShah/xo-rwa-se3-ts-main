@@ -5,7 +5,7 @@
     "outDir": "build/js",
     "module": "esnext",
     "moduleResolution": "node",
-    "types": ["reflect-metadata", "jest"],
+    "types": ["jest"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true
