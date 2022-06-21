@@ -58,6 +58,7 @@ export class App {
   async process(appParameters: AppParameters): Promise<void> {
 
     debug("Collecting URLs")
+    appParameters.url = appParameters.url.replace("www.", "")
     let linksSet = await this.collectURLs(appParameters)
     debug(`URL collection complete. Total URLs collected: ${linksSet.size}`)
     debug(`Searching for text`)
