@@ -34,7 +34,7 @@ describe('UrlLoaderService', () => {
     const stringPromise = instance.loadUrlTextAndLinks(testUrl)
 
     // then
-    await expect(stringPromise).resolves.toEqual({ text: pageValue, links: ['test.html'] })
+    await expect(stringPromise).resolves.toEqual({ text: pageValue, links: new Set<string>(['test.html']) })
     expect(mockBrowser.newPage).toHaveBeenCalledTimes(1)
     expect(pageMock.goto).toHaveBeenCalledTimes(1)
     expect(pageMock.goto).toHaveBeenCalledWith(testUrl)
