@@ -10,7 +10,7 @@ interface AppParameters {
 }
 
 export const DEFAULT_URL = "https://www.kayako.com/";
-export const DEFAULT_DEPTH = "1";
+export const DEFAULT_DEPTH = "2";
 export const DEFAULT_WORD = "kayako";
 
 export class App {
@@ -45,7 +45,6 @@ export class App {
         let setOfLinks = await this.urlLoader.loadOnlyLinks(currentUrl)
         linksSet = new Set([...linksSet,...setOfLinks])
 
-        debug(currentUrl)
         debug(`URLs collection in progress. Collected: ${linksSet.size}`)
         for (const link of setOfLinks){
           queue.enqueue(link)
