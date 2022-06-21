@@ -68,9 +68,13 @@ export class App {
         continue
       }
       debug(`Processing link: ${link}`)
-      const extractedTextInner = await this.urlLoader.loadOnlyText(link)
-      const regx = new RegExp(appParameters.word, 'gi')
-      count += (extractedTextInner.toLocaleLowerCase().match(regx) ?? []).length
+      try {
+        const extractedTextInner = await this.urlLoader.loadOnlyText(link)
+        const regx = new RegExp(appParameters.word, 'gi')
+        count += (extractedTextInner.toLocaleLowerCase().match(regx) ?? []).length
+      } catch (e) {
+        console.log(e, 'error')
+      }
     }
     console.log(`Found ${count} instances of '${appParameters.word}' in the body of the pages`)
   }
