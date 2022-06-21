@@ -23,7 +23,7 @@ export class UrlLoaderService {
 
   async loadUrlTextAndLinks (url: string): Promise<TextAndLinks> {
     const page = await this.browser.newPage()
-    await page.setDefaultNavigationTimeout(0);
+    await page.setDefaultNavigationTimeout(0)
     await page.goto(url)
     await page.waitForSelector('body')
     const [text, links] = await Promise.all([await pageEval(page, domExtractText), await pageEval(page, domExtractHyperlinks)])
@@ -33,20 +33,18 @@ export class UrlLoaderService {
 
   async loadOnlyText (url: string): Promise<string> {
     const page = await this.browser.newPage()
-    await page.setDefaultNavigationTimeout(0);
+    await page.setDefaultNavigationTimeout(0)
     await page.goto(url)
     await page.waitForSelector('body')
-    const text = await pageEval(page, domExtractText)
-    return text
+    return await pageEval(page, domExtractText)
   }
 
   async loadOnlyLinks (url: string): Promise<Set<string>> {
     const page = await this.browser.newPage()
-    await page.setDefaultNavigationTimeout(0);
+    await page.setDefaultNavigationTimeout(0)
     await page.goto(url)
     await page.waitForSelector('body')
     const links = await pageEval(page, domExtractHyperlinks)
-    const set = new Set(links)
-    return set
+    return new Set(links)
   }
 }

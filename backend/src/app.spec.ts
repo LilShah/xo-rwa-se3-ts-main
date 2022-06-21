@@ -27,7 +27,7 @@ describe('App', () => {
 
   it('should call url loader and return count when word present', async () => {
     // given
-    urlLoader.loadUrlTextAndLinks.mockResolvedValue({ text: 'kayako Kayako text', links: new Set<string>()})
+    urlLoader.loadUrlTextAndLinks.mockResolvedValue({ text: 'kayako Kayako text', links: new Set<string>() })
     mockConsole()
 
     // when
